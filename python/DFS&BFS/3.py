@@ -15,11 +15,38 @@ def dfs(graph, x, y):
         dfs(graph, x, y+1) #하
         dfs(graph, x, y-1) #상
 
+# BFS로 풀어보기
+from collections import deque
+
+def bfs(graph, x, y):
+    queue = deque([[x, y]])
+    while queue:
+        v = queue.popleft()
+        x = v[0]
+        y = v[1]
+        if graph[x][y] == 0:
+            graph[x][y] = 1
+            if x-1>=0 and x-1<n and graph[x-1][y]==0:
+                queue.append([x-1, y])
+            if x+1>=0 and x+1<n and graph[x+1][y]==0:
+                queue.append([x+1, y])
+            if y-1>=0 and y-1<m and graph[x][y-1]==0:
+                queue.append([x, y-1])
+            if y+1>=0 and y+1<m and graph[x][y+1]==0:
+                queue.append([x, y+1])
+
 for i in range(0, n):
     for j in range(0, m):
-        if ice[i][j] == 0 :
-            dfs(ice, i, j)
+        if ice[i][j] == 0:
+            bfs(ice, i, j)
             count += 1
+
+
+# for i in range(0, n):
+#     for j in range(0, m):
+#         if ice[i][j] == 0 :
+#             dfs(ice, i, j)
+#             count += 1
 
 print(count)
 
