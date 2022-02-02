@@ -144,7 +144,7 @@ export default class Heap {
   heapifyUp(customStartIndex) {
     //마지막 원소를 heap이 될때까지(올바른 순서가 될때까지) 올림
     //add에서는 파라미터 없이(맨 마지막 요소를 올림), remove에서는 파라미터 넣어서(그 요소를 올림) heapifyUp을 호출
-    let currentIndex = customStartIndex || this.heapContainer.length - 1;
+    let currentIndex = customStartIndex || this.heap.length - 1;
 
     //부모 요소가 존재하고(올릴 곳이 있고) 부모 요소의 값과 현재값을 비교해서 바꿔야하면 swap
     //swap했을 경우 현재 인덱스를 부모 인덱스로 업데이트
@@ -202,10 +202,9 @@ export default class Heap {
   pairIsInCorrectOrder(firstElement, secondElement) {
     // Max Heap일 경우
     // 첫번째 인자가 두번째 인자보다 크거나 같아야함.
-    return firstElement >= secondElement;
-
+    //return firstElement >= secondElement;
     // Min Heap일 경우
     // 첫번째 인자가 두번째 인자보다 작거나 같아야함.
-    // return firstElement <= secondElement
+    //return firstElement <= secondElement;
   }
 }

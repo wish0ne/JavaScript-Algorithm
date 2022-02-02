@@ -1,4 +1,4 @@
-import Heap from "./Heap";
+import Heap from "./Heap.js";
 
 export default class PriorityQueue extends Heap {
   constructor() {
@@ -41,7 +41,7 @@ export default class PriorityQueue extends Heap {
   }
 
   //두 아이템의 우선순위 비교
-  comparePrioiryt(a, b) {
+  comparePriority(a, b) {
     if (this.priorities.get(a) === this.priorities.get(b)) {
       return 0;
     }
@@ -52,5 +52,11 @@ export default class PriorityQueue extends Heap {
   compareValue(a, b) {
     if (a === b) return 0;
     return a < b ? -1 : 1;
+  }
+
+  pairIsInCorrectOrder(firstElement, secondElement) {
+    return (
+      this.priorities.get(firstElement) <= this.priorities.get(secondElement)
+    );
   }
 }
