@@ -13,26 +13,20 @@
 <br>
 
 ## 📅🗓 스터디 계획
-### 월화수목금
+### 월화수목금토
 * 오전 8 - 10시
-* 어제 풀었던 알고리즘 문제 다시 풀기 (Javascript)
-* 오늘 풀어야 할 알고리즘 시험 보기 (Python)
-* 각자의 풀이를 설명한 후 의견 나누기
-* 코드 정리 후 깃허브에 푸쉬
-
-### 토
-* 오전 8 - 10시
-* 운체 강의 듣기(8 - 9)
-* 컴넷 강의 듣기(9 - 10)
 
 ### 일
 * 오전 9 - 12시
-* 운체 책 읽기 & 토론 (9 - 10:30)
-* 컴넷 강의 듣기 (10:30 - 11:30)
-* 컴넷 책 읽기 (11:30 - 12)
+
+### 일정
+![image](https://user-images.githubusercontent.com/52497708/152090205-0379bce1-6a57-438c-bd46-a910edeb8d3a.png)
+
 <br>
 
 ## 📚🖥 스터디 자료
+* [알고리즘 교재](http://www.yes24.com/Product/Goods/91433923)
+
 * [운체 강의](https://www.youtube.com/playlist?list=PLBrGAFAIyf5rby7QylRc6JxU5lzQ9c4tN)
 
 * [운체 슬라이드](https://hpclab.tistory.com/1)
