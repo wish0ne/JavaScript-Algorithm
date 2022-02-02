@@ -1,0 +1,20 @@
+{
+  "name": "algorithm-cs-study",
+  "version": "1.0.0",
+  "description": "`2021.01~ing`",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wish1030/Algorithm-CS-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wish1030/Algorithm-CS-study/issues"
+  },
+  "homepage": "https://github.com/wish1030/Algorithm-CS-study#readme"
+}
