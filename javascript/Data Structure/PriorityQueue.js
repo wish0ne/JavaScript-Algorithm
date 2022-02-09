@@ -16,6 +16,11 @@ export default class PriorityQueue extends Heap {
     return this;
   }
 
+  //priority 얻기
+  getPriority(item) {
+    return this.priorities.get(item);
+  }
+
   //우선순위큐에서 아이템 제거
   remove(item) {
     super.remove(item);
