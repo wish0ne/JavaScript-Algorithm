@@ -3,6 +3,10 @@ export default class Heap {
     this.heap = [];
   }
 
+  getLength() {
+    return this.heap.length;
+  }
+
   //왼쪽 자식 인덱스 = 부모인덱스 * 2 + 1
   getLeftChildIndex(parentIndex) {
     return 2 * parentIndex + 1;
@@ -205,6 +209,6 @@ export default class Heap {
     //return firstElement >= secondElement;
     // Min Heap일 경우
     // 첫번째 인자가 두번째 인자보다 작거나 같아야함.
-    //return firstElement <= secondElement;
+    return firstElement <= secondElement;
   }
 }
