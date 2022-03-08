@@ -209,6 +209,6 @@ export default class Heap {
     //return firstElement >= secondElement;
     // Min Heap일 경우
     // 첫번째 인자가 두번째 인자보다 작거나 같아야함.
-    return firstElement <= secondElement;
+    return firstElement[0] <= secondElement[0];
   }
 }
