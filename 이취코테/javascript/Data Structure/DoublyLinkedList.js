@@ -17,11 +17,12 @@ class DoublyLinkedList {
   append(value) {
     const node = new Node(value);
     //list가 비었을때
-    if (this.isEmpty()) {
+    if (!this.head) {
       this.head = node;
       this.tail = node;
-    } else {
-      //list에 node가 존재할때
+    }
+    //list에 node가 존재할때
+    else {
       this.tail.next = node;
       node.prev = this.tail;
       this.tail = node;
@@ -39,10 +40,12 @@ class DoublyLinkedList {
 
     const deletedHead = this.head;
     //리스트에 노드가 하나밖에 없을때
-    if (this.head === this.tail) {
+    if (!this.head.next) {
       this.head = null;
       this.tail = null;
-    } else {
+    }
+    //리스트에 노드가 여러개인 경우
+    else {
       this.head = this.head.next;
       this.head.prev = null;
     }

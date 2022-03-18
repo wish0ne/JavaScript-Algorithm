@@ -57,3 +57,34 @@ console.log(answer);
 // 2 5
 // 3 6
 // 3 7
+
+//다른 풀이 추가
+const visitied2 = new Array(n + 1).fill(false);
+const bfs2 = (graph, start, visitied) => {
+  const queue = new DoublyLinkedList();
+  let area = 0; //출발 도시로부터 거리
+  queue.append([start, area]);
+  visitied[start] = true;
+  const answer = []; //최단거리가 K인 도시를 저장할 배열
+  while (!queue.isEmpty()) {
+    const [node, len] = queue.deleteHead();
+    if (len > k) break;
+    if (len === k) answer.push(node);
+    for (let i of graph[node]) {
+      if (!visitied[i]) {
+        queue.append([i, len + 1]);
+        visitied[i] = true;
+      }
+    }
+  }
+  return answer;
+};
+
+const answer2 = bfs2(graph, x, visitied2);
+answer2.sort((a, b) => a - b);
+answer2.length === 0 ? console.log(-1) : console.log(answer2.join("\n"));
+
+//현재 노드까지의 거리를 저장하고, 그 거리가 k이면 answer에 추가하는 풀이
+//bfs 다 돌 필요 없이 거리가 k+1인 노드까지만 확인하면 되서 시간을 줄일 수 있는듯
+//거리가 k인 노드까지만 확인하게도 가능할 것 같은데 (len이 k+1이면 큐에 넣지 않게 하는 등) 복잡해질 수 있을 것 같음
+//첫번쨰 풀이방법에 비해 조금 더 빠르긴 하지만 좀 덜 명확한 풀이인듯
