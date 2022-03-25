@@ -50,7 +50,8 @@ function solution(words, queries) {
           array[query.length],
           0,
           array[query.length].length - 1,
-          query.replace(/\?/g, "z")
+          query.replace(/\?/g, "z") //정규 표현식 사용
+          //최신 자바스크립트에서는 replaceAll 제공
         ) -
         first_index(
           array[query.length],

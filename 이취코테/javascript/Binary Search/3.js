@@ -24,3 +24,5 @@ while (start <= end) {
 }
 
 console.log(answer);
+
+//높이 H를 이진탐색으로 찾아서 파라메트릭 서치 문제를 해결
