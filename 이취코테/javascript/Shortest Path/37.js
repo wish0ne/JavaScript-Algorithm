@@ -18,7 +18,7 @@ for (let i = 0; i <= n; i++) {
 //비용 입력받기
 for (let i = 1; i <= m; i++) {
   const [a, b, c] = input[i + 1].split(" ").map(Number);
-  graph[a][b] = Math.min(graph[a][b], c); //중복 노선 중 최소비용 선택
+  graph[a][b] = Math.min(graph[a][b], c); //✔중복 노선 중 최소비용 선택
 }
 
 //플로이드 워셜 알고리즘 수행

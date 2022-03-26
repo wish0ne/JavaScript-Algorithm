@@ -85,45 +85,6 @@ export default class Heap {
     return this;
   }
 
-  remove(item) {
-    //삭제할 아이템의 개수 찾기
-    const numberOfItemsToRemove = this.find(item).length;
-
-    for (let iteration = 0; iteration < numberOfItemsToRemove; iteration += 1) {
-      //heapify 프로세스 후 인덱스들이 변경되기 때문에 삭제 후 매번 삭제할 요소의 인덱스를 찾아야한다.
-      const indexToRemove = this.find(item).pop();
-
-      //맨 마지막 요소를 삭제해야할 경우에는 heapify가 필요하지 않음. 그냥 제거하면 됨.
-      if (indexToRemove === this.heap.length - 1) {
-        this.heap.pop();
-      } else {
-        //삭제하려는 요소의 자리에 마지막 요소의 값을 할당.
-        this.heap[indexToRemove] = this.heap.pop();
-
-        // 부모 요소를 찾음.
-        const parentItem = this.parent(indexToRemove);
-
-        //0. 말단 노드가 아닐때
-        //1. 부모 요소가 없거나(루트 노드)
-        //2. 부모 요소가 있고, 부모 요소와 현재 인덱스가 올바른 순서이면 (올라갈 필요 없음)
-        // heapify down.
-        //부모 요소가 없거나 부모 요소와 현재 인덱스가 올바른 순서일 경우 (max heap일때는 부모 요소가 더 큰 경우, min heap일때는 더 작은 경우) heapify down. 그 외의 경우 heapify up.
-        if (
-          //말단 노드가 아니고(말단노드이면 내려갈 수 없음. 올라가야함.)
-          this.hasLeftChild(indexToRemove) &&
-          (!parentItem ||
-            this.pairIsInCorrectOrder(parentItem, this.heap[indexToRemove]))
-        ) {
-          this.heapifyDown(indexToRemove);
-        } else {
-          this.heapifyUp(indexToRemove);
-        }
-      }
-    }
-
-    return this;
-  }
-
   find(item) {
     //찾고자 하는 아이템의 인덱스들
     const foundItemIndices = [];
