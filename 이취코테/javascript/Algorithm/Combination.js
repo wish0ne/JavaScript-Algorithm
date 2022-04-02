@@ -15,10 +15,6 @@ const Combination = (arr, selectNum) => {
   return results;
 };
 
-// const example = [1, 2, 3, 4];
-// const result = Combination(example, 3);
-// for (let i = 0; i < result.length; i++) {
-//   console.log(result[i]);
-// }
-
-export default Combination;
+const example = [1, 2, 3];
+const result = Combination(example, 2);
+for (let i of result) console.log(i);

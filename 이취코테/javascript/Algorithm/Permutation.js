@@ -12,6 +12,6 @@ function Permutation(arr, selectNumber) {
   return results;
 }
 
-const example = [1, 2, 3, 4];
-const result = Permutation(example, 3);
-console.log(result);
+const example = [1, 2];
+const result = Permutation(example, 2);
+for (let i of result) console.log(i);
