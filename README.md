@@ -13,14 +13,15 @@
 <br>
 
 ## 📅🗓 스터디 계획
-### 월화수목금토
+### 월화수목금
 * 오전 8 - 10시
 
-### 일
-* 오전 9 - 12시
+### 토일
+* 오전 8 - 11시
 
 ### 일정
 ![image](https://user-images.githubusercontent.com/52497708/152090205-0379bce1-6a57-438c-bd46-a910edeb8d3a.png)
+![image](https://user-images.githubusercontent.com/52497708/161468395-a4786a2f-c3d9-40fc-93fd-9673fe360d5c.png)
 
 <br>
 
