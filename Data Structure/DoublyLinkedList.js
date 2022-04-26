@@ -53,6 +53,25 @@ class DoublyLinkedList {
     return deletedHead.value;
   }
 
+  delete(node) {
+    if (node === this.head) {
+      if (node === this.tail) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = node.next;
+        node.next.prev = null;
+      }
+    } else if (node === this.tail) {
+      this.tail = node.prev;
+      node.prev.next = null;
+    } else {
+      node.prev.next = node.next;
+      node.next.prev = node.prev;
+    }
+    this.size -= 1;
+  }
+
   print() {
     let iter = this.head;
     let print = "";
