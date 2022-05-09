@@ -1,4 +1,5 @@
-let input = require("fs").readFileSync("../test.txt").toString().split("\n");
+import fs from "fs";
+let input = fs.readFileSync("../test.txt").toString().split("\n");
 
 let [n, m] = input[0].split(" ").map(Number);
 let [a, b, d] = input[1].split(" ").map(Number);
@@ -10,7 +11,6 @@ for (let i = 0; i < n; i++) {
 }
 
 // 북 동 남 서
-const direction = [0, 1, 2, 3];
 const dy = [0, 1, 0, -1];
 const dx = [-1, 0, 1, 0];
 
@@ -27,7 +27,7 @@ gameMap[a][b] = -1;
 while (true) {
   nextD = d === 0 ? 3 : d - 1;
   nextX = a + dx[d];
-  nextY = b + dx[d];
+  nextY = b + dy[d];
 
   if (gameMap[nextX][nextY] === 1 || gameMap[nextX][nextY] === -1) {
     fail += 1;

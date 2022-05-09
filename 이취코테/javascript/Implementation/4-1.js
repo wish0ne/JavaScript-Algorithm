@@ -1,4 +1,5 @@
-let input = require("fs").readFileSync("../test.txt").toString().split("\n");
+import fs from "fs";
+let input = fs.readFileSync("../test.txt").toString().split("\n");
 let n = parseInt(input[0]);
 
 // L R U D
@@ -11,8 +12,8 @@ let y = 1;
 let nextX = 1;
 let nextY = 1;
 
-input[1].split(" ").map((i) => {
-  command.map((c, index) => {
+input[1].split(" ").forEach((i) => {
+  command.forEach((c, index) => {
     if (c === i) {
       nextX = x + dx[index];
       nextY = y + dy[index];

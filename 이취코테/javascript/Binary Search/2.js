@@ -18,7 +18,7 @@ const binary_search = (arr, target, start, end) => {
   }
 };
 
-store.sort((a, b) => a - b);
+store.sort((a, b) => a - b); //🔥이진탐색 전 정렬 필수
 let answer = "";
 for (let i of customer) {
   if (binary_search(store, i, 0, n - 1)) {
