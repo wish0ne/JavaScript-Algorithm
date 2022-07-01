@@ -100,10 +100,56 @@ function solution(k, dungeons) {
 //solve
 //bfs로 풀었는데 dfs나 이중for문으로도 가능한 문제(던전이 최대 8개밖에 안됨)
 
+//dfs풀이
+//dfs에서 올라가면서 값 복구시키는 로직 익숙해지기
+
+//계속 유지해야하는 answer는 전역변수로 둬서 dfs에서 return안해도되게 함
+//dfs에서 내려갈때마다 값이 바뀌고 올라갈때는 복원되어야하는 count, score는 변수를 바로 변경하지 않고, 파라미터로 바뀐값을 전달함으로써 수동으로 복원하지 않아도 되게함.
+function solution2(k, dungeons) {
+  let answer = 0;
+  const dfs = (count, score) => {
+    answer = Math.max(count, answer);
+    for (let i = 0; i < dungeons.length; i++) {
+      if (!visited[i] && dungeons[i][0] <= score) {
+        visited[i] = true;
+        dfs(count + 1, score - dungeons[i][1]);
+        visited[i] = false;
+      }
+    }
+  };
+
+  const visited = new Array(dungeons.length + 1).fill(false);
+  dfs(0, k);
+  return answer;
+}
+
+//아래 내가 짠 코드랑 위의 간결한 코드랑 비교하면서 공부하기
+function solution3(k, dungeons) {
+  const dfs = (v, visited, count, maxCount, score) => {
+    visited[v] = true;
+    for (let i = 1; i < dungeons.length + 1; i++) {
+      if (!visited[i] && dungeons[i - 1][0] <= score) {
+        count += 1;
+        score -= dungeons[i - 1][1];
+        [maxCount, score, count] = dfs(i, visited, count, maxCount, score);
+      }
+    }
+    visited[v] = false;
+    if (v !== 0) score += dungeons[v - 1][1];
+    maxCount = Math.max(count, maxCount);
+    count -= 1;
+    return [maxCount, score, count];
+  };
+
+  const visited = new Array(dungeons.length + 1).fill(false);
+  let answer = dfs(0, visited, 0, 0, k)[0];
+  return answer;
+}
+
 console.log(
-  solution(50, [
-    [50, 30],
-    [40, 10],
-    [30, 20],
+  solution2(80, [
+    [80, 20],
+    [50, 40],
+    [30, 10],
   ])
 );
