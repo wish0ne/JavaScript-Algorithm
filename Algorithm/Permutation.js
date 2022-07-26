@@ -12,6 +12,8 @@ function Permutation(arr, selectNumber) {
   return results;
 }
 
-const example = [1, 2];
-const result = Permutation(example, 2);
+//가장 작은 수부터 커지는 순서로 순열을 찾음
+
+const example = [1, 2, 3, 4];
+const result = Permutation(example, 3);
 for (let i of result) console.log(i);
