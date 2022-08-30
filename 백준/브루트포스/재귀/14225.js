@@ -60,3 +60,5 @@ while (true) {
   j += 1;
 }
 console.log(j);
+
+//해설2 : 비트마스크 이용
