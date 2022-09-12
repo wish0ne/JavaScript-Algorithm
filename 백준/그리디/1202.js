@@ -1,4 +1,4 @@
-export default class Heap {
+class Heap {
   constructor() {
     this.heap = [];
   }
@@ -193,17 +193,44 @@ export default class Heap {
     //return firstElement >= secondElement;
     // Min Heap일 경우
     // 첫번째 인자가 두번째 인자보다 작거나 같아야함.
-    //return firstElement[0] <= secondElement[0];
-    return firstElement <= secondElement;
+    return firstElement >= secondElement;
   }
 }
 
-const heap = new Heap();
-heap.add(5);
-heap.add(3);
-console.log(heap.toString());
-heap.add(2);
-heap.add(1);
-console.log(heap.toString());
-heap.remove(2);
-console.log(heap.toString());
+import fs from "fs";
+const readFile = "../test.txt";
+// const readFile = '/dev/stdin';
+let input = fs.readFileSync(readFile).toString().split("\n");
+
+const [n, k] = input[0].split(" ").map(Number);
+const arr = [];
+for (let i = 1; i <= n; i++) arr.push(input[i].split(" ").map(Number));
+for (let i = n + 1; i < n + k + 1; i++) arr.push([parseInt(input[i]), -1]);
+
+//무게 기준으로 오름차순
+arr.sort((a, b) => a[0] - b[0]);
+
+const heap = new Heap(); //가방에 들어갈 수 있는 후보 보석들 저장
+let ans = 0;
+for (let p of arr) {
+  //보석이면 후보에 추가
+  if (p[1] !== -1) heap.add(p[1]);
+  //가방이면 후보 중 가장 비싼 보석의 값 더함
+  else {
+    if (heap.getLength() > 0) ans += heap.poll();
+  }
+}
+console.log(ans);
+
+//못 푼 문제...!!
+//가격이 비싼 보석부터 가방에 넣고, 넣을 수 있는 가방 중에서 가장 가벼운 가방에 넣어야 한다까지 알았음
+//근데 이걸 이중for문으로 O(NK)말고 어떻게 구현할 수 있는지 도무지 감이 안왔음...!!
+//찾아보니까 c++에서는 multiset으로 풀수있다고 하는데, js에서는 삭제연산이 도저히 O(N)말고 줄일 수 있는 방법이 생각나지 않았음
+
+//해설보니까 나는 보석을 기준으로 가방에 넣는 (보석->가방)만 생각했는데,
+//가방을 기준으로 각 가방에 넣을 수 있는 가장 비싼 보석을 찾는 (가방->보석)을 생각해보지 못했음!!
+//1. 가방이 기준이 될 수 있다고 생각하지 못함
+//2. 보석과 가방을 하나의 배열로 합치고 무게를 기준으로 오름차순 정렬 (보석, 가방 둘다 무게를 기준으로 판단)
+//3. 앞에서부터 확인하면서 보석이면 후보에 추가, 가방이면 후보에서 가장 비싼 보석 넣음
+//4. 후보 저장 자료구조로 maxHeap 사용 (가격 최대값 찾기 용이)
+//1~4 하나같이 다 정말 생각해낼수 없었다..^^ 엄청 많이 배운 문제 복습합시다...
