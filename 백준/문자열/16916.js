@@ -102,3 +102,50 @@ console.log(rabinKarp(s, p));
 //N,M이 100만이기 때문에 O(NM)인 브루트포스로는 풀 수 없음
 //라빈 카프 알고리즘으로 문자열 S에서 패턴 P를 찾음
 //해시함수에 따라 최선 : O(N+M), 최악 : O(NM)
+
+//KMP 알고리즘 풀이
+function buildPatternTable(word) {
+  const patternTable = [0];
+  let prefixIndex = 0;
+  let suffixIndex = 1;
+
+  while (suffixIndex < word.length) {
+    if (word[prefixIndex] === word[suffixIndex]) {
+      patternTable[suffixIndex] = prefixIndex + 1;
+      prefixIndex += 1;
+      suffixIndex += 1;
+    } else if (prefixIndex === 0) {
+      patternTable[suffixIndex] = 0;
+      suffixIndex += 1;
+    } else {
+      prefixIndex = patternTable[prefixIndex - 1];
+    }
+  }
+  return patternTable;
+}
+
+function KMP(text, word) {
+  let n = text.length;
+  let m = word.length;
+
+  let textIndex = 0;
+  let wordIndex = 0;
+
+  const pi = buildPatternTable(word);
+
+  while (textIndex < n) {
+    if (text[textIndex] === word[wordIndex]) {
+      //find
+      if (wordIndex === m - 1) return 1;
+      textIndex += 1;
+      wordIndex += 1;
+    } else if (wordIndex > 0) {
+      wordIndex = pi[wordIndex - 1];
+    } else {
+      textIndex += 1;
+    }
+  }
+  return 0;
+}
+
+console.log(KMP(s, p));
