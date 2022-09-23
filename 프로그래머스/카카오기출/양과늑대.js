@@ -80,7 +80,7 @@ function solution_my(info, edges) {
   return answer;
 }
 //🔥visited 원상복구때문에 디버깅 오래함
-//🔥반례 및 시간초과) wolf가 더 많으면 아예 재귀 돌지 않기
+//🔥반례 및 시간초과) wolf가 더 많으면 아예 재귀 돌지 않기 -> 문제 잘 읽자...문제조건임
 
 console.log(
   solution(
